@@ -1,135 +1,267 @@
-.modal-overlay {
+/* Login Modal Overlay */
+.login-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
-  animation: fadeIn 0.2s ease;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in;
 }
 
-.modal-content {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Container */
+.login-modal {
   background: white;
-  padding: 30px;
   border-radius: 12px;
-  width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  width: 100%;
   max-width: 400px;
+  padding: 40px 30px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.3s ease;
+  animation: slideUp 0.3s ease-out;
 }
 
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
 .modal-close {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 15px;
   background: none;
   border: none;
-  font-size: 28px;
+  font-size: 24px;
   cursor: pointer;
-  color: #666;
+  color: #999;
   transition: color 0.2s;
 }
 
 .modal-close:hover {
-  color: #000;
-}
-
-.modal-content h2 {
-  margin: 0 0 20px 0;
   color: #333;
-  text-align: center;
 }
 
-.modal-content form {
+/* Modal Header */
+.modal-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.modal-header h2 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.modal-header p {
+  margin: 0;
+  color: #999;
+  font-size: 14px;
+}
+
+/* Form */
+.auth-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
-.modal-content input {
-  padding: 12px;
-  border: 2px solid #ddd;
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
-.modal-content input:focus {
+.form-group input:focus {
   outline: none;
-  border-color: #4CAF50;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
+.form-group input:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  background-color: #fee;
+  color: #c33;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid #fdd;
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Success Message */
+.success-message {
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  background-color: #efe;
+  color: #3c3;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid #dfd;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Submit Button */
 .submit-btn {
   padding: 12px;
-  background: #4CAF50;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 6px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 10px;
 }
 
 .submit-btn:hover:not(:disabled) {
-  background: #45a049;
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .submit-btn:disabled {
-  background: #ccc;
+  background-color: #ccc;
   cursor: not-allowed;
 }
 
-.error-message {
-  background: #ffebee;
-  color: #c62828;
-  padding: 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  text-align: center;
-}
-
+/* Toggle Mode */
 .toggle-mode {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.toggle-mode p {
+  margin: 0;
+  font-size: 14px;
   color: #666;
+}
+
+.toggle-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 0;
   font-size: 14px;
 }
 
-.toggle-mode span {
-  color: #4CAF50;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.toggle-mode span:hover {
+.toggle-link:hover:not(:disabled) {
+  color: #0056b3;
   text-decoration: underline;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.toggle-link:disabled {
+  color: #999;
+  cursor: not-allowed;
 }
 
-@keyframes slideUp {
-  from { 
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Guest Option */
+.guest-option {
+  text-align: center;
+  margin-top: 15px;
 }
 
+.guest-option p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.guest-link {
+  background: none;
+  border: none;
+  color: #28a745;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 0;
+  font-size: 14px;
+}
+
+.guest-link:hover {
+  color: #1e7e34;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
 @media (max-width: 480px) {
-  .modal-content {
-    padding: 20px;
-    width: 95%;
+  .login-modal {
+    width: 90%;
+    max-width: 100%;
+    padding: 30px 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 }
